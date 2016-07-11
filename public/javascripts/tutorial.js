@@ -132,7 +132,7 @@ window.onload = function() {
     tolleson.setTo([new Phaser.Point(190, 325), new Phaser.Point(190, 350), new Phaser.Point(130, 350), new Phaser.Point(130, 325)]);
 
 
-    graphics.beginFill(0xff0044);
+    graphics.beginFill(0xffeeaa);
     graphics.drawPolygon(tolleson.points);
     graphics.endFill();
 
@@ -142,7 +142,7 @@ window.onload = function() {
     avondale.setTo([new Phaser.Point(130, 350), new Phaser.Point(150, 350), new Phaser.Point(150, 400), new Phaser.Point(100, 400), new Phaser.Point(100, 275), new Phaser.Point(125, 275), new Phaser.Point(125, 260), new Phaser.Point(150, 260), new Phaser.Point(150, 325), new Phaser.Point(130, 325)]);
 
 
-    graphics.beginFill(0x22ff44);
+    graphics.beginFill(0xffcc88);
     graphics.drawPolygon(avondale.points);
     graphics.endFill();
 
@@ -152,7 +152,7 @@ window.onload = function() {
     park.setTo([new Phaser.Point(125, 275), new Phaser.Point(90, 275), new Phaser.Point(90, 255), new Phaser.Point(125, 255)]);
 
 
-    graphics.beginFill(0x4400bb );
+    graphics.beginFill(0xbb9944);
     graphics.drawPolygon(park.points);
     graphics.endFill();
 
@@ -162,7 +162,7 @@ window.onload = function() {
     goodyears.setTo([ new Phaser.Point(90, 255), new Phaser.Point(90, 275), new Phaser.Point(100, 275), new Phaser.Point(100, 450), new Phaser.Point(40, 450), new Phaser.Point(40, 255)]);
 
 
-    graphics.beginFill(0xffff18);
+    graphics.beginFill(0xeeee77);
     graphics.drawPolygon(goodyears.points);
     graphics.endFill();
 
@@ -222,7 +222,7 @@ window.onload = function() {
     mesa.setTo([new Phaser.Point(375,310), new Phaser.Point(375, 260), new Phaser.Point(575, 260), new Phaser.Point(575, 310)]);
 
 
-    graphics.beginFill(0x000000);
+    graphics.beginFill(0xffbbcc);
     graphics.drawPolygon(mesa.points);
     graphics.endFill();
 
