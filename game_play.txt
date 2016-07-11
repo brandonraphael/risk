@@ -12,7 +12,7 @@
 * Each turn player gets more infantry based offed number of owned territories, if they own a continent, or based on card value, default minimum of 1 infantry
 * Winner will be the first to own all territories.
 * Number of die rolled when battling depends on amount of troops
-  -for attack: 1,2, 3 dice 2 - always 1, 3 always 2 , 4 always 3 or more
+  -for attack: 1,2, 3 dice 2 - always 1, 3 always 2 , 4 or more always 3
   - defender : min 1 if 2 or more 2 dice.
 
 * After attack player can move one infantry to an owned surrounding territory
