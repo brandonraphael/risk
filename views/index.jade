@@ -2,4 +2,7 @@ extends layout
 
 block content
   h1= title
+  script(src='javascripts/tutorial.js')
+  script(type="text/babel" src="javascripts/hud.jsx")
   p Welcome to #{title}
+  div(id='hud-entry-point')
