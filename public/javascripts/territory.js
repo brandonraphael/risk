@@ -1,6 +1,6 @@
-function Territory(name, neighbors, phaserObj){
+function Territory(name, phaserObj){
   this.name = name;
-  this.neighbors = neighbors;
+  this.neighbors = [];
   this.phaserObj = phaserObj;
   this.owner = null;
   this.infantry = 0;
@@ -14,5 +14,9 @@ Territory.prototype.updateInfantry = function (infantry) {
   this.infantry += infantry;
   if(this.infantry < 0) this.infantry = 0;
 };
+
+Territory.prototype.setNeighbors = function( neighbors ){
+  this.neighbors = neighbors;
+}
 
 module.exports = Territory;

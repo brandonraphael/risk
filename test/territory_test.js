@@ -14,23 +14,24 @@ describe('territory', function(){
     var territory = new Territory(name);
     expect(territory.name).to.equal(name);
   });
-
-  it('has neighbors', function(){
-    var territory = new Territory(name, neighbors);
-    expect(territory.neighbors[0].name).to.equal('West Valley');
-    expect(territory.neighbors[1].name).to.equal('Scottsdale');
-  });
-
-  it('has owner', function(){
+  it('can add an owner with the updateOwner method', function(){
     var territory = new Territory(name, neighbors);
     territory.updateOwner(owner);
     expect(territory.owner).to.be.an.instanceof(Player);
   });
+  it('should be able to set neighbors with the setNeighbors method', function() {
+    var territory = new Territory('Testaria');
+    var otherTerritory = new Territory('Something Elseland');
+    territory.setNeighbors([otherTerritory]);
+    expect(territory.neighbors).to.deep.equal([otherTerritory]);
+  });
+  it('should be able to set neighbors with the setNeighbors method', function() {
+    var territory = new Territory('Testaria');
+    var otherTerritory = new Territory('Something Elseland');
+    var otherOtherTerritory = new Territory('Farawayland');
 
-  it('has a Phaser Polygon object', function(){
-    var territory = new Territory(name, neighbors, phaserObj);
-    expect(territory.phaserObj).to.not.be.null;
-    expect(territory.phaserObj).to.not.be.undefined;
+    territory.setNeighbors([otherTerritory, otherOtherTerritory]);
+    expect(territory.neighbors).to.deep.equal([otherTerritory, otherOtherTerritory]);
   });
 
   it('adds infantry to the territory', function(){
