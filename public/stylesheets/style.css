@@ -6,3 +6,13 @@ body {
 a {
   color: #00B7FF;
 }
+
+
+
+
+
+.section {
+  background-color: red;
+  display: inline-block;
+  float: left;
+}

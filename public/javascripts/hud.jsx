@@ -3,10 +3,12 @@ var Hud = React.createClass({
     return (
             <div>
               <h3>{this.props.playerName}</h3>
-              <PlayerInfo/>
-              <AttackerInfo/>
-              <DefenderInfo/>
-              <Actions/>
+              <div className="row">
+                <PlayerInfo/>
+                <AttackerInfo/>
+                <DefenderInfo/>
+                <Actions/>
+              </div>
             </div>
         );
       }
@@ -15,24 +17,29 @@ var Hud = React.createClass({
 var PlayerInfo = React.createClass({
   render: function(){
     return (
-      <table>
-        <tr>
-          <th>Player Information</th>
-        </tr>
-        <tr>
-         <td>Total Units</td>
-         <td>4</td>
-        </tr>
-        <tr>
-         <td>Territories Owned</td>
-         <td>2</td>
-        </tr>
-        <tr>
-         <td>Continents Owned</td>
-         <td>1</td>
-        </tr>
-      </table>
-
+      <div className="col-md-4">
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>Player Information</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+             <td>Total Units</td>
+             <td>4</td>
+            </tr>
+            <tr>
+             <td>Territories Owned</td>
+             <td>2</td>
+            </tr>
+            <tr>
+             <td>Continents Owned</td>
+             <td>1</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
     );
   }
 });
@@ -40,19 +47,23 @@ var PlayerInfo = React.createClass({
 var AttackerInfo = React.createClass({
   render: function(){
     return (
-      <div>
-        <table>
-          <tr>
-            <th>Attacker Information</th>
-          </tr>
-          <tr>
-           <td>Total Units</td>
-           <td>4</td>
-          </tr>
-          <tr>
-           <td>Territory attacking</td>
-           <td>Scottsdale</td>
-          </tr>
+      <div className="col-md-3">
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>Attacker Information</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+             <td>Total Units</td>
+             <td>4</td>
+            </tr>
+            <tr>
+             <td>Territory attacking</td>
+             <td>Scottsdale</td>
+            </tr>
+          </tbody>
         </table>
       </div>
     );
@@ -62,19 +73,23 @@ var AttackerInfo = React.createClass({
 var DefenderInfo = React.createClass({
   render: function(){
     return (
-      <div>
-        <table>
-          <tr>
-            <th>Defender Information</th>
-          </tr>
-          <tr>
-           <td>Total Units</td>
-           <td>4</td>
-          </tr>
-          <tr>
-           <td>Territory defending</td>
-           <td>Scottdale</td>
-          </tr>
+      <div className="col-md-3" >
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>Defender Information</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+             <td>Total Units</td>
+             <td>4</td>
+            </tr>
+            <tr>
+             <td>Territory defending</td>
+             <td>Scottdale</td>
+            </tr>
+          </tbody>
         </table>
       </div>
     );
@@ -84,9 +99,9 @@ var DefenderInfo = React.createClass({
 var Actions = React.createClass({
   render: function(){
     return (
-      <div>
-        <button>Attack</button>
-        <button>Next Phase</button>
+      <div className="col-md-2">
+        <button className="btn btn-danger">Attack</button>
+        <button className="btn btn-default">Next Phase</button>
       </div>
     );
   }
