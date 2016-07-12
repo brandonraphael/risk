@@ -24,30 +24,20 @@ Battle.prototype.solveBattle = function(attacker, defender){
 
 
 Battle.prototype.getAttackerRoll = function(attackerInfantry) {
-  var attackerRoll;
-  switch(attackerInfantry){
-    case 2:
-      attackerRoll = this.diceEmulator.roll(1);
-      break;
-    case 3:
-      attackerRoll = this.diceEmulator.roll(2);
-      break;
-    default:
-      attackerRoll = this.diceEmulator.roll(3);
+  var attackerRoll = {
+    1: this.diceEmulator.roll(1),
+    2: this.diceEmulator.roll(2),
+    'default': this.diceEmulator.roll(3)
   }
-  return attackerRoll;
+  return (attackerRoll[attackerInfantry] || attackerRoll['default']);
 }
 
 Battle.prototype.getDefenderRoll = function(defenderInfantry) {
-  var defenderRoll;
-  switch(defenderInfantry){
-    case 1:
-      defenderRoll = this.diceEmulator.roll(1);
-      break;
-    default:
-      defenderRoll = this.diceEmulator.roll(2);
+  var defenderRoll = {
+    1: this.diceEmulator.roll(1),
+    'default': this.diceEmulator.roll(2)
   }
-  return defenderRoll;
+  return (defenderRoll[defenderInfantry] || defenderRoll['default']);
 }
 
 Battle.prototype.compareRolls = function (attackerRoll, defenderRoll) {
