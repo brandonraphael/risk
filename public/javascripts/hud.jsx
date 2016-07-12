@@ -2,7 +2,9 @@ var Hud = React.createClass({
   render: function(){
     return (
             <div>
+              <div className="row">
               <h3>{this.props.playerName}</h3>
+              </div>
               <div className="row">
                 <PlayerInfo/>
                 <AttackerInfo/>
@@ -100,8 +102,16 @@ var Actions = React.createClass({
   render: function(){
     return (
       <div className="col-md-2">
-        <button className="btn btn-danger">Attack</button>
-        <button className="btn btn-default">Next Phase</button>
+        <div className="row">
+          <div>
+            <button className="btn btn-danger btn-block">Attack</button>
+          </div>
+        </div>
+        <div className="row">
+          <div>
+            <button className="btn btn-default btn-block">Next Phase</button>
+          </div>
+        </div>
       </div>
     );
   }
