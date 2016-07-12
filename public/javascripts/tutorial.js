@@ -282,6 +282,7 @@ window.onload = function() {
   }
 
   function update() {
+
     // if (poly.contains(game.input.x, game.input.y) && game.input.activePointer.isDown && this.state==='movementPartOne') {
     //   console.log('hi');
     //   this.state = 'movementPartTwo';
