@@ -107,6 +107,7 @@ var Actions = React.createClass({
             <button className="btn btn-danger btn-block">Attack</button>
           </div>
         </div>
+        <br/>
         <div className="row">
           <div>
             <button className="btn btn-default btn-block">Next Phase</button>
