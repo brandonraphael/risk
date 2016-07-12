@@ -20,7 +20,6 @@ window.onload = function() {
 
     graphics = game.add.graphics(0, 0);
     var peoriaTerritory = new Territory('Peoria', peoria);
-    console.log(peoriaTerritory);
 
     graphics.beginFill(0xf5deb3);
     graphics.drawPolygon(peoria.points);
@@ -268,9 +267,8 @@ window.onload = function() {
     southMesaTerritory.setNeighbors([mesaTerritory, tempeTerritory, chandlerTerritory, gilbertTerritory]);
     gilbertTerritory.setNeighbors([southMesaTerritory, chandlerTerritory]);
     chandlerTerritory.setNeighbors([southPhoenixTerritory, tempeTerritory, southMesaTerritory, gilbertTerritory]);
-    console.log(chandlerTerritory);
 
-
+    this.territories = [glendaleTerritory, northPhoenixTerritory, paradiseValleyTerritory, scottsdaleTerritory, tempeTerritory, southPhoenixTerritory, tollesonTerritory, avondaleTerritory, peoriaTerritory, youngtownTerritory, sunCityTerritory, caveCreekTerritory, northScottsdaleTerritory, fountainHillsTerritory, parkTerritory, goodyearTerritory, chandlerTerritory, gilbertTerritory, southMesaTerritory, mesaTerritory, phoenixTerritory];
 
     game.stage.scale.pageAlignHorizontally = true;
     game.stage.scale.pageAlignVertically = true;
@@ -282,7 +280,7 @@ window.onload = function() {
   }
 
   function update() {
-
+    polygonMouseCheck(this.territories, this);
     // if (poly.contains(game.input.x, game.input.y) && game.input.activePointer.isDown && this.state==='movementPartOne') {
     //   console.log('hi');
     //   this.state = 'movementPartTwo';
