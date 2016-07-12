@@ -17,8 +17,7 @@ var PlayerInfo = React.createClass({
     return (
       <table>
         <tr>
-          <th>Player Info</th>
-          <th></th>
+          <th>Player Information</th>
         </tr>
         <tr>
          <td>Total Units</td>
@@ -42,7 +41,19 @@ var AttackerInfo = React.createClass({
   render: function(){
     return (
       <div>
-
+        <table>
+          <tr>
+            <th>Attacker Information</th>
+          </tr>
+          <tr>
+           <td>Total Units</td>
+           <td>4</td>
+          </tr>
+          <tr>
+           <td>Territory attacking</td>
+           <td>Scottsdale</td>
+          </tr>
+        </table>
       </div>
     );
   }
@@ -52,7 +63,19 @@ var DefenderInfo = React.createClass({
   render: function(){
     return (
       <div>
-
+        <table>
+          <tr>
+            <th>Defender Information</th>
+          </tr>
+          <tr>
+           <td>Total Units</td>
+           <td>4</td>
+          </tr>
+          <tr>
+           <td>Territory defending</td>
+           <td>Scottdale</td>
+          </tr>
+        </table>
       </div>
     );
   }
@@ -62,7 +85,8 @@ var Actions = React.createClass({
   render: function(){
     return (
       <div>
-
+        <button>Attack</button>
+        <button>Next Phase</button>
       </div>
     );
   }
