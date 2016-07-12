@@ -6,3 +6,15 @@ body {
 a {
   color: #00B7FF;
 }
+
+h3 {
+  background-color: #adc2eb;
+  text-align: center;
+}
+
+#hud-entry-point {
+  position: fixed;
+  bottom: 10%;
+  right: 0;
+  left: 0;
+}
