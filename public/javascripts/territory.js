@@ -1,4 +1,4 @@
-var territory = "territory";
+// var territory = "territory";
 
 function Territory(name, phaserObj){
   this.name = name;
