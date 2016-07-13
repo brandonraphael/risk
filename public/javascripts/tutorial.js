@@ -318,6 +318,8 @@ window.onload = function() {
 
     if (this.state === 'gameStart') {
       gameStart(this);
+    } else if (this.state === 'placement') {
+      placement(this);
     }
 
     // if (poly.contains(game.input.x, game.input.y) && game.input.activePointer.isDown && this.state==='movementPartOne') {
