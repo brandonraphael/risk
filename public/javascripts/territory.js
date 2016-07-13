@@ -1,3 +1,5 @@
+var territory = "territory";
+
 function Territory(name, phaserObj){
   this.name = name;
   this.neighbors = [];

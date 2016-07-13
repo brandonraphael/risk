@@ -5,7 +5,6 @@ window.onload = function() {
   var graphics;
 
   function create() {
-    var color;
     game.stage.backgroundColor = "#000";
 
 
@@ -21,12 +20,8 @@ window.onload = function() {
 
     graphics = game.add.graphics(0, 0);
     var peoriaTerritory = new Territory('Peoria', peoria);
-    console.log(peoriaTerritory);
 
-    color = 0xf5deb3;
-    peoriaTerritory.color = color;
-
-    graphics.beginFill(color);
+    graphics.beginFill(0xf5deb3);
     graphics.drawPolygon(peoria.points);
     graphics.endFill();
 
@@ -37,9 +32,7 @@ window.onload = function() {
 
     var sunCityTerritory = new Territory('Sun City', sunCity);
 
-    color = 0xFFC0CB;
-    sunCityTerritory.color = color;
-    graphics.beginFill(color);
+    graphics.beginFill(0xFFC0CB);
     graphics.drawPolygon(sunCity.points);
     graphics.endFill();
 
@@ -51,9 +44,7 @@ window.onload = function() {
 
     var youngtownTerritory = new Territory('Youngtown', youngtown);
 
-    color = 0x88bbff;
-    youngtownTerritory.color = color;
-    graphics.beginFill(color);
+    graphics.beginFill(0x88bbff);
     graphics.drawPolygon(youngtown.points);
     graphics.endFill();
 
@@ -64,9 +55,7 @@ window.onload = function() {
 
     var glendaleTerritory = new Territory('Glendale', glendale);
 
-    color = 0x88ee99;
-    glendaleTerritory.color = color;
-    graphics.beginFill(color);
+    graphics.beginFill(0x88ee99);
     graphics.drawPolygon(glendale.points);
     graphics.endFill();
 
@@ -77,9 +66,7 @@ window.onload = function() {
 
     var northPhoenixTerritory = new Territory('North Phoenix', northPhoenix);
 
-    color = 0x88ee33;
-    northPhoenixTerritory.color = color;
-    graphics.beginFill(color);
+    graphics.beginFill(0x88ee33);
     graphics.drawPolygon(northPhoenix.points);
     graphics.endFill();
 
@@ -90,9 +77,7 @@ window.onload = function() {
 
     var paradiseValleyTerritory = new Territory('Paradise Valley', paradiseValley);
 
-    color = 0xffaa33;
-    paradiseValleyTerritory.color = color;
-    graphics.beginFill(color);
+    graphics.beginFill(0xffaa33);
     graphics.drawPolygon(paradiseValley.points);
     graphics.endFill();
 
@@ -103,9 +88,7 @@ window.onload = function() {
 
     var caveCreekTerritory = new Territory('Cave Creek', caveCreek);
 
-    color = 0xffaa33;
-    caveCreekTerritory.color = color;
-    graphics.beginFill(color);
+    graphics.beginFill(0xffaa33);
     graphics.drawPolygon(caveCreek.points);
     graphics.endFill();
 
@@ -116,9 +99,7 @@ window.onload = function() {
 
     var northScottsdaleTerritory = new Territory('North Scottsdale', northScottsdale);
 
-    color = 0xffcc88;
-    northScottsdaleTerritory.color = color;
-    graphics.beginFill(color);
+    graphics.beginFill(0xffcc88);
     graphics.drawPolygon(northScottsdale.points);
     graphics.endFill();
 
@@ -129,9 +110,7 @@ window.onload = function() {
 
     var scottsdaleTerritory = new Territory('Scottsdale', scottsdale);
 
-    color = 0xff5588;
-    scottsdaleTerritory.color = color;
-    graphics.beginFill(color);
+    graphics.beginFill(0xff5588);
     graphics.drawPolygon(scottsdale.points);
     graphics.endFill();
 
@@ -142,9 +121,7 @@ window.onload = function() {
 
     var fountainHillsTerritory = new Territory('Fountain Hills', fountainHills);
 
-    color = 0xabc123;
-    fountainHillsTerritory.color = color;
-    graphics.beginFill(color);
+    graphics.beginFill(0xabc123);
     graphics.drawPolygon(fountainHills.points);
     graphics.endFill();
 
@@ -155,9 +132,7 @@ window.onload = function() {
 
     var phoenixTerritory = new Territory('Phoenix', phoenix);
 
-    color = 0xabc123;
-    phoenixTerritory.color = color;
-    graphics.beginFill(color);
+    graphics.beginFill(0xabc123);
     graphics.drawPolygon(phoenix.points);
     graphics.endFill();
 
@@ -168,9 +143,7 @@ window.onload = function() {
 
     var tollesonTerritory = new Territory('Tolleson', tolleson);
 
-    color = 0xffeeaa;
-    tollesonTerritory.color = color;
-    graphics.beginFill(color);
+    graphics.beginFill(0xffeeaa);
     graphics.drawPolygon(tolleson.points);
     graphics.endFill();
 
@@ -181,9 +154,7 @@ window.onload = function() {
 
     var avondaleTerritory = new Territory('Avondale', avondale);
 
-    color = 0xffcc88;
-    avondaleTerritory.color = color;
-    graphics.beginFill(color);
+    graphics.beginFill(0xffcc88);
     graphics.drawPolygon(avondale.points);
     graphics.endFill();
 
@@ -194,9 +165,7 @@ window.onload = function() {
 
     var parkTerritory = new Territory('Park', park);
 
-    color = 0xbb9944;
-    parkTerritory.color = color;
-    graphics.beginFill(color);
+    graphics.beginFill(0xbb9944);
     graphics.drawPolygon(park.points);
     graphics.endFill();
 
@@ -298,7 +267,6 @@ window.onload = function() {
     southMesaTerritory.setNeighbors([mesaTerritory, tempeTerritory, chandlerTerritory, gilbertTerritory]);
     gilbertTerritory.setNeighbors([southMesaTerritory, chandlerTerritory]);
     chandlerTerritory.setNeighbors([southPhoenixTerritory, tempeTerritory, southMesaTerritory, gilbertTerritory]);
-    console.log(chandlerTerritory);
 
     this.territories = [glendaleTerritory, northPhoenixTerritory, paradiseValleyTerritory, scottsdaleTerritory, tempeTerritory, southPhoenixTerritory, tollesonTerritory, avondaleTerritory, peoriaTerritory, youngtownTerritory, sunCityTerritory, caveCreekTerritory, northScottsdaleTerritory, fountainHillsTerritory, parkTerritory, goodyearTerritory, chandlerTerritory, gilbertTerritory, southMesaTerritory, mesaTerritory, phoenixTerritory];
 
@@ -312,8 +280,7 @@ window.onload = function() {
   }
 
   function update() {
-    var bla =polygonMouseCheck(this.territories, this, graphics);
-    console.log(bla);
+    console.log(polygonMouseCheck(this.territories, this));
 
     // if (poly.contains(game.input.x, game.input.y) && game.input.activePointer.isDown && this.state==='movementPartOne') {
     //   console.log('hi');
