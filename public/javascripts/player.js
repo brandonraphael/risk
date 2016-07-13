@@ -15,12 +15,22 @@ Player.prototype.sumInfantry = function(){
 }
 
 Player.prototype.checkContinents = function(continents){
-  this.ownedContinents = [];
-  continents.forEach(function(continent){
-    if(this.territories.includes(continent.territories)){
-      this.ownedContinents.push(continent);
-    }
+  var self = this;
+  this.ownedContinents = continents.filter(function(continent) {
+    return continent.territories.reduce(function(acc, territory) {
+      if (!acc) return acc;
+      if (self.territories.indexOf(territory) === -1) return false;
+      return acc;
+    }, true)
   });
+}
+
+
+Player.prototype.getBonus = function(continents) {
+  this.checkContinents(continents);
+  return this.ownedContinents.reduce(function(acc, continent){
+    return acc + continent.bonus;
+  }, 0)
 }
 
 module.exports = Player;

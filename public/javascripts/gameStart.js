@@ -15,7 +15,7 @@ function gameStart(game) {
 }
 
 function numNewInfantry(player) {
-  return Math.floor(player.territories.length/3) || 1;
+  return Math.floor((player.territories.length/3) + (0)) || 1;
 }
 
 function placement(game) {
@@ -33,6 +33,7 @@ function placeNewInfantry(game) {
       territory.updateInfantry(1);
       game.playerInfantry--;
       window.alert(game.turn.name + ' has ' + game.playerInfantry + ' units left to place')
+      console.log(game.turn);
       success = true;
     }
   });
