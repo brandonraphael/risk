@@ -3,7 +3,7 @@ var Hud = React.createClass({
     return (
             <div>
               <div className="row">
-              <h3>{this.props.playerName}</h3>
+              <h3>{this.props.playerName} - Attack Phase</h3>
               </div>
               <div className="row">
                 <PlayerInfo/>
