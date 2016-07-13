@@ -6,10 +6,12 @@ window.onload = function() {
 
   function create() {
     var color;
-    game.stage.backgroundColor = "#000";
-
-
-    this.state = 'movementPartOne';
+    this.stage.backgroundColor = "#000";
+    this.pieceCounter = 0;
+    this.players = [new Player('Player One'), new Player('Player Two'), new Player('Player Three'), new Player('Player Four')];
+    this.turnIdx = 0;
+    this.turn = this.players[this.turnIdx];
+    this.state = 'gameStart';
     // rect = new Phaser.Rectangle(50, 50, 50, 50);
     // rect.neighbors = ['hello', 'world'];
 
@@ -312,9 +314,12 @@ window.onload = function() {
   }
 
   function update() {
-    var bla =polygonMouseCheck(this.territories, this, graphics);
-    console.log(bla);
+    // var bla =polygonMouseCheck(this.territories, this, graphics);
+    // console.log(bla);
 
+    if (this.state === 'gameStart') {
+      gameStart(this);
+    }
     // if (poly.contains(game.input.x, game.input.y) && game.input.activePointer.isDown && this.state==='movementPartOne') {
     //   console.log('hi');
     //   this.state = 'movementPartTwo';

@@ -10,7 +10,9 @@ function Territory(name, phaserObj){
 
 Territory.prototype.updateOwner = function (owner) {
   this.owner = owner;
-  this.owner.addTerritory(this);
+  if (owner.territories.indexOf(this) === -1) {
+    this.owner.addTerritory(this);
+  }
 };
 
 Territory.prototype.updateInfantry = function (infantry) {
