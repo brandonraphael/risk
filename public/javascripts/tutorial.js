@@ -1,5 +1,6 @@
+var playerTurn, ownedInfantry, ownedTerritories, ownedContinents, territoryText;
 window.onload = function() {
-  var game = new Phaser.Game(1000, 1000, Phaser.AUTO, 'phaser-example', { create: create, update: update, render: render });
+  var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example', { create: create, update: update, render: render });
   var rect;
   var peoria, sunCity, glendale, youngtown, northPhoenix, paradiseValley, caveCreek, northScottsdale, scottsdale, fountainHills, goodyear, park, avondale, tolleson, phoenix, chandler, northMesa, southPhoenix, chandler, gilbert, southMesa;
   var graphics;
@@ -23,7 +24,6 @@ window.onload = function() {
 
     graphics = game.add.graphics(0, 0);
     var peoriaTerritory = new Territory('Peoria', peoria);
-    console.log(peoriaTerritory);
 
     color = 0xffff00;
     peoriaTerritory.color = color;
@@ -207,7 +207,7 @@ window.onload = function() {
     //  And then populate it via setTo, using any combination of values as above
     goodyear.setTo([ new Phaser.Point(90, 255), new Phaser.Point(90, 275), new Phaser.Point(100, 275), new Phaser.Point(100, 450), new Phaser.Point(40, 450), new Phaser.Point(40, 255)]);
 
-    var goodyearTerritory = new Territory('goodyear', goodyear);
+    var goodyearTerritory = new Territory('Goodyear', goodyear);
 
     graphics.beginFill(0xff3300);
     graphics.drawPolygon(goodyear.points);
@@ -301,7 +301,6 @@ window.onload = function() {
     southMesaTerritory.setNeighbors([mesaTerritory, tempeTerritory, chandlerTerritory, gilbertTerritory]);
     gilbertTerritory.setNeighbors([southMesaTerritory, chandlerTerritory]);
     chandlerTerritory.setNeighbors([southPhoenixTerritory, tempeTerritory, southMesaTerritory, gilbertTerritory]);
-    console.log(chandlerTerritory);
 
     // Set game territories array
     this.territories = [glendaleTerritory, northPhoenixTerritory, paradiseValleyTerritory, scottsdaleTerritory, tempeTerritory, southPhoenixTerritory, tollesonTerritory, avondaleTerritory, peoriaTerritory, youngtownTerritory, sunCityTerritory, caveCreekTerritory, northScottsdaleTerritory, fountainHillsTerritory, parkTerritory, goodyearTerritory, chandlerTerritory, gilbertTerritory, southMesaTerritory, mesaTerritory, phoenixTerritory];
@@ -316,10 +315,14 @@ window.onload = function() {
     // Set game Continents array
     this.continents = [northEastValley, northWestValley, eastValley, westValley, centralValley];
 
-    game.add.text(game.world.centerX + game.world.centerX/2, game.world.centerY + game.world.centerY/2, this.players[0].name, { font: "25px Arial", fill: "#ffffff", align: "center" });
-    game.add.text(game.world.centerX + game.world.centerX/2, game.world.centerY + game.world.centerY/2 + 50, 'Total Units: ' + this.players[0].sumInfantry(), { font: "15px Arial", fill: "#ffffff", align: "left" });
-    game.add.text(game.world.centerX + game.world.centerX/2, game.world.centerY + game.world.centerY/2 + 75, 'Territories: ' + this.players[0].territories.length, { font: "15px Arial", fill: "#ffffff", align: "left" });
-    game.add.text(game.world.centerX + game.world.centerX/2, game.world.centerY + game.world.centerY/2 + 100, 'Continents: ', { font: "15px Arial", fill: "#ffffff", align: "left" });
+    game.add.text(game.world.centerX + game.world.centerX/2, game.world.centerY - 3 * game.world.centerY/4, 'Valley Risk', { font: "35px Arial", fill: "#ffffff", align: "center"})
+
+    territoryText= game.add.text(game.world.centerX + game.world.centerX/2, game.world.centerY - game.world.centerY/2, 'Territory: ', { font: "15px Arial", fill: "#ffffff", align: "left" });
+
+    playerName = game.add.text(game.world.centerX + game.world.centerX/2, game.world.centerY + game.world.centerY/2, this.turn.name, { font: "25px Arial", fill: "#ffffff", align: "center" });
+    ownedInfantry = game.add.text(game.world.centerX + game.world.centerX/2, game.world.centerY + game.world.centerY/2 + 50, 'Total Units: ' + this.turn.sumInfantry(), { font: "15px Arial", fill: "#ffffff", align: "left" });
+    ownedTerritories = game.add.text(game.world.centerX + game.world.centerX/2, game.world.centerY + game.world.centerY/2 + 75, 'Territories: ' + this.turn.territories.length, { font: "15px Arial", fill: "#ffffff", align: "left" });
+    ownedContinents = game.add.text(game.world.centerX + game.world.centerX/2, game.world.centerY + game.world.centerY/2 + 100, 'Continents: ' + this.turn.ownedContinents.length, { font: "15px Arial", fill: "#ffffff", align: "left" });
 
     game.stage.scale.pageAlignHorizontally = true;
     game.stage.scale.pageAlignVertically = true;
@@ -330,13 +333,23 @@ window.onload = function() {
     // game.debug.rectangle(rect);  ``
   }
   function update() {
-    // var bla =polygonMouseCheck(this.territories, this, graphics);
-    // console.log(bla);
-
     if (this.state === 'gameStart') {
       gameStart(this);
-    } else if (this.state === 'placement') {
-      placement(this);
+    }
+
+    playerName.setText(this.turn.name);
+    ownedInfantry.setText('Total Units: ' + this.turn.sumInfantry());
+    ownedTerritories.setText('Territories: ' + this.turn.territories.length);
+    ownedContinents.setText('Continents: ' + this.turn.ownedContinents.length);
+
+    var cursorView =polygonMouseCheck(this.territories, this, graphics);
+    if(cursorView){
+      if(!cursorView.owner){
+        territoryText.setText('Territory: ' + cursorView.name + '\nOwner: For Sale!' + '\nInfantry: ' + cursorView.infantry);
+      }
+      else{
+        territoryText.setText('Territory: ' + cursorView.name + '\nOwner: ' + cursorView.owner.name + '\nInfantry: ' + cursorView.infantry);
+      }
     }
 
     // if (poly.contains(game.input.x, game.input.y) && game.input.activePointer.isDown && this.state==='movementPartOne') {
