@@ -1,9 +1,13 @@
-var playerTurn, ownedInfantry, ownedTerritories, ownedContinents, territoryText;
+var playerTurn, ownedInfantry, ownedTerritories, ownedContinents, territoryText, button;
 window.onload = function() {
-  var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example', { create: create, update: update, render: render });
+  var game = new Phaser.Game(900, 600, Phaser.AUTO, 'phaser-example', { preload: preload, create: create, update: update, render: render });
   var rect;
   var peoria, sunCity, glendale, youngtown, northPhoenix, paradiseValley, caveCreek, northScottsdale, scottsdale, fountainHills, goodyear, park, avondale, tolleson, phoenix, chandler, northMesa, southPhoenix, chandler, gilbert, southMesa;
   var graphics;
+
+  function preload(){
+    game.load.spritesheet('button', '../images/button_sprite_sheet.png', 193, 71);
+  }
 
   function create() {
     var color;
@@ -315,7 +319,13 @@ window.onload = function() {
     // Set game Continents array
     this.continents = [northEastValley, northWestValley, eastValley, westValley, centralValley];
 
-    game.add.text(game.world.centerX + game.world.centerX/2, game.world.centerY - 3 * game.world.centerY/4, 'Valley Risk', { font: "35px Arial", fill: "#ffffff", align: "center"})
+    // button = game.add.button(game.world.centerX + 3*game.world.centerX/4, game.world.centerY + game.world.centerY/2, 400, 'button', actionOnClick, this, 2, 1, 0);
+    // button.onInputOver.add(over, this);
+    // button.onInputOut.add(out, this);
+    // button.onInputUp.add(up, this);
+
+    game.add.text(game.world.centerX + game.world.centerX/4, game.world.centerY - 3 * game.world.centerY/4, 'Phoenix Valley Risk', { font: "35px Arial", fill: "#ffffff", align: "left"})
+    game.add.text(game.world.centerX + game.world.centerX/2, game.world.centerY - 5 * game.world.centerY/8, '(Developer Edition)', { font: "10px Arial", fill: "#ffffff", align: "center"})
 
     territoryText= game.add.text(game.world.centerX + game.world.centerX/2, game.world.centerY - game.world.centerY/2, 'Territory: ', { font: "15px Arial", fill: "#ffffff", align: "left" });
 
@@ -364,4 +374,7 @@ window.onload = function() {
     // console.log(rect);
   }
 
+  function actionOnClick () {
+
+  }
 }
