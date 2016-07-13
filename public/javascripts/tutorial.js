@@ -1,5 +1,5 @@
 window.onload = function() {
-  var game = new Phaser.Game(600, 500, Phaser.AUTO, 'phaser-example', { create: create, update: update, render: render });
+  var game = new Phaser.Game(1000, 1000, Phaser.AUTO, 'phaser-example', { create: create, update: update, render: render });
   var rect;
   var peoria, sunCity, glendale, youngtown, northPhoenix, paradiseValley, caveCreek, northScottsdale, scottsdale, fountainHills, goodyear, park, avondale, tolleson, phoenix, chandler, northMesa, southPhoenix, chandler, gilbert, southMesa;
   var graphics;
@@ -312,7 +312,6 @@ window.onload = function() {
   function render() {
     // game.debug.rectangle(rect);  ``
   }
-
   function update() {
     // var bla =polygonMouseCheck(this.territories, this, graphics);
     // console.log(bla);
@@ -320,6 +319,7 @@ window.onload = function() {
     if (this.state === 'gameStart') {
       gameStart(this);
     }
+
     // if (poly.contains(game.input.x, game.input.y) && game.input.activePointer.isDown && this.state==='movementPartOne') {
     //   console.log('hi');
     //   this.state = 'movementPartTwo';
