@@ -279,6 +279,7 @@ window.onload = function() {
     graphics.drawPolygon(mesa.points);
     graphics.endFill();
 
+    // Setting Neighbor Territories
     peoriaTerritory.setNeighbors([sunCityTerritory, glendaleTerritory, youngtownTerritory, northPhoenixTerritory]);
     sunCityTerritory.setNeighbors([peoriaTerritory, youngtownTerritory]);
     youngtownTerritory.setNeighbors([glendaleTerritory, sunCityTerritory, peoriaTerritory]);
@@ -302,7 +303,23 @@ window.onload = function() {
     chandlerTerritory.setNeighbors([southPhoenixTerritory, tempeTerritory, southMesaTerritory, gilbertTerritory]);
     console.log(chandlerTerritory);
 
+    // Set game territories array
     this.territories = [glendaleTerritory, northPhoenixTerritory, paradiseValleyTerritory, scottsdaleTerritory, tempeTerritory, southPhoenixTerritory, tollesonTerritory, avondaleTerritory, peoriaTerritory, youngtownTerritory, sunCityTerritory, caveCreekTerritory, northScottsdaleTerritory, fountainHillsTerritory, parkTerritory, goodyearTerritory, chandlerTerritory, gilbertTerritory, southMesaTerritory, mesaTerritory, phoenixTerritory];
+
+    // Set up Continents
+    var northWestValley = new Continent('North West Valley', [glendaleTerritory, peoriaTerritory, youngtownTerritory, sunCityTerritory], 4);
+    var westValley = new Continent('West Valley', [goodyearTerritory, avondaleTerritory, parkTerritory], 3);
+    var centralValley = new Continent('Central Valley', [northPhoenixTerritory, southPhoenixTerritory, phoenixTerritory, tempeTerritory, tollesonTerritory], 5);
+    var eastValley = new Continent('East Valley', [southMesaTerritory, mesaTerritory, chandlerTerritory, gilbertTerritory], 4);
+    var northEastValley = new Continent('North East Valley', [caveCreekTerritory, scottsdaleTerritory, northScottsdaleTerritory, paradiseValleyTerritory, fountainHillsTerritory], 4);
+
+    // Set game Continents array
+    this.continents = [northEastValley, northWestValley, eastValley, westValley, centralValley];
+
+    game.add.text(game.world.centerX + game.world.centerX/2, game.world.centerY + game.world.centerY/2, this.players[0].name, { font: "25px Arial", fill: "#ffffff", align: "center" });
+    game.add.text(game.world.centerX + game.world.centerX/2, game.world.centerY + game.world.centerY/2 + 50, 'Total Units: ' + this.players[0].sumInfantry(), { font: "15px Arial", fill: "#ffffff", align: "left" });
+    game.add.text(game.world.centerX + game.world.centerX/2, game.world.centerY + game.world.centerY/2 + 75, 'Territories: ' + this.players[0].territories.length, { font: "15px Arial", fill: "#ffffff", align: "left" });
+    game.add.text(game.world.centerX + game.world.centerX/2, game.world.centerY + game.world.centerY/2 + 100, 'Continents: ', { font: "15px Arial", fill: "#ffffff", align: "left" });
 
     game.stage.scale.pageAlignHorizontally = true;
     game.stage.scale.pageAlignVertically = true;
