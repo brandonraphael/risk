@@ -10,12 +10,12 @@ function gameStart(game) {
     game.state = 'placement';
     window.alert('It is now ' + game.turn.name + "'s turn.")
 
-    game.playerInfantry = numNewInfantry(game.turn);
+    game.playerInfantry = numNewInfantry(game.turn, game);
   }
 }
 
-function numNewInfantry(player) {
-  return Math.floor((player.territories.length/3) + (0)) || 1;
+function numNewInfantry(player, game) {
+  return Math.floor((player.territories.length/3) + (player.getBonus(game.continents))) || 1;
 }
 
 function placement(game) {

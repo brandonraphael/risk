@@ -335,6 +335,8 @@ window.onload = function() {
   function update() {
     if (this.state === 'gameStart') {
       gameStart(this);
+    } else if (this.state === 'placement') {
+      placement(this);
     }
 
     playerName.setText(this.turn.name);
