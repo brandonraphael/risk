@@ -13,6 +13,8 @@ window.onload = function() {
     this.turnIdx = 0;
     this.turn = this.players[this.turnIdx];
     this.state = 'gameStart';
+    this.selectedTerritory = null;
+    this.selectedEnemy = null;
     // rect = new Phaser.Rectangle(50, 50, 50, 50);
     // rect.neighbors = ['hello', 'world'];
 
@@ -337,6 +339,8 @@ window.onload = function() {
       gameStart(this);
     } else if (this.state === 'placement') {
       placement(this);
+    } else if (this.state === 'attack') {
+      attack(this);
     }
 
     playerName.setText(this.turn.name);
