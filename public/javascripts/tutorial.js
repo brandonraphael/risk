@@ -327,7 +327,6 @@ window.onload = function() {
 
     button = game.add.button(game.world.centerX + game.world.centerX/2, game.world.centerY - 71/2, 'button', this.actionOnClick, this, 2, 1, 0);
 
-
     game.add.text(game.world.centerX + game.world.centerX/4, game.world.centerY - 3 * game.world.centerY/4, 'Phoenix Valley Risk', { font: "35px Arial", fill: "#ffffff", align: "left"})
     game.add.text(game.world.centerX + game.world.centerX/2, game.world.centerY - 5 * game.world.centerY/8, '(Developer Edition)', { font: "10px Arial", fill: "#ffffff", align: "center"})
 
