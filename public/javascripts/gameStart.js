@@ -6,7 +6,7 @@ function gameStart(game) {
     game.turn = game.players[++game.turnIdx % game.numPlayers];
     game.pieceCounter++;
   }
-  if (game.pieceCounter === 4) {
+  if (game.pieceCounter === 24) {
     game.state = 'placement';
     window.alert('It is now ' + game.turn.name + "'s turn.")
 
@@ -95,7 +95,9 @@ function fight(game) {
   console.log(winner);
   window.alert(winner.name + ' won the battle!');
   if(game.selectedEnemy.infantry === 0){
+
     game.selectedEnemy.updateOwner(game.turn);
+    game.turn.checkContinents(game.territories);
     game.selectedEnemy.updateInfantry(1);
     game.selectedTerritory.updateInfantry(-1);
     if (game.selectedTerritory.infantry >= 2) {
