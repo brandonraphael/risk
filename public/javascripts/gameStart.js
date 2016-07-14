@@ -97,7 +97,8 @@ function fight(game) {
   if(game.selectedEnemy.infantry === 0){
 
     game.selectedEnemy.updateOwner(game.turn);
-    game.turn.checkContinents(game.territories);
+    game.turn.checkContinents(game.continents);
+    //console.log(game.territories);
     game.selectedEnemy.updateInfantry(1);
     game.selectedTerritory.updateInfantry(-1);
     if (game.selectedTerritory.infantry >= 2) {
