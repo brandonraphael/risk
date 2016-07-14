@@ -6,7 +6,7 @@ window.onload = function() {
   var graphics;
 
   function preload(){
-    game.load.spritesheet('button', '../images/button_sprite_sheet.png', 193, 71);
+    game.load.spritesheet('button', '../images/youtube.png', 193, 71);
   }
 
   function create() {
@@ -321,10 +321,8 @@ window.onload = function() {
     // Set game Continents array
     this.continents = [northEastValley, northWestValley, eastValley, westValley, centralValley];
 
-    // button = game.add.button(game.world.centerX + 3*game.world.centerX/4, game.world.centerY + game.world.centerY/2, 400, 'button', actionOnClick, this, 2, 1, 0);
-    // button.onInputOver.add(over, this);
-    // button.onInputOut.add(out, this);
-    // button.onInputUp.add(up, this);
+    button = game.add.button(game.world.centerX + game.world.centerX/2, game.world.centerY - 71/2, 'button', actionOnClick, this, 2, 1, 0);
+
 
     game.add.text(game.world.centerX + game.world.centerX/4, game.world.centerY - 3 * game.world.centerY/4, 'Phoenix Valley Risk', { font: "35px Arial", fill: "#ffffff", align: "left"})
     game.add.text(game.world.centerX + game.world.centerX/2, game.world.centerY - 5 * game.world.centerY/8, '(Developer Edition)', { font: "10px Arial", fill: "#ffffff", align: "center"})
