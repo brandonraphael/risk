@@ -59,7 +59,7 @@ function attack(game){
 function checkForOwnedTerritory(game) {
   var success = false;
   game.territories.forEach(function(territory) {
-    if (territory.phaserObj.contains(game.input.x, game.input.y) && game.input.activePointer.isDown && territory.owner === game.turn) {
+    if (territory.phaserObj.contains(game.input.x, game.input.y) && game.input.activePointer.isDown && territory.owner === game.turn && territory.infantry >= 2) {
       success = true;
       game.selectedTerritory = territory;
     }
@@ -83,6 +83,11 @@ function fight(game) {
   var winner = battle.solveBattle(game.selectedTerritory, game.selectedEnemy);
   console.log(winner);
   window.alert(winner.name + ' won the battle!');
+  if(game.selectedEnemy.infantry === 0){
+    game.selectedEnemy.updateOwner(game.turn);
+    game.selectedEnemy.updateInfantry(1);
+    game.selectedTerritory.updateInfantry(-1);
+  }
   game.selectedTerritory = null;
   game.selectedEnemy = null;
 }
