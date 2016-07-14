@@ -1,4 +1,5 @@
-var playerTurn, ownedInfantry, ownedTerritories, ownedContinents, territoryText, button;
+var playerTurn, ownedInfantry, ownedTerritories, ownedContinents, territoryText, button,
+  attackerInfo, defenderInfo, attackerTerritoryName, defenderTerritoryName, attackerTotal;
 window.onload = function() {
   var game = new Phaser.Game(900, 600, Phaser.AUTO, 'phaser-example', { preload: preload, create: create, update: update, render: render });
   var rect;
@@ -334,6 +335,13 @@ window.onload = function() {
     ownedTerritories = game.add.text(game.world.centerX + game.world.centerX/2, game.world.centerY + game.world.centerY/2 + 75, 'Territories: ' + this.turn.territories.length, { font: "15px Arial", fill: "#ffffff", align: "left" });
     ownedContinents = game.add.text(game.world.centerX + game.world.centerX/2, game.world.centerY + game.world.centerY/2 + 100, 'Continents: ' + this.turn.ownedContinents.length, { font: "15px Arial", fill: "#ffffff", align: "left" });
 
+
+    attackerInfo = game.add.text(game.world.centerX - 3*game.world.centerX/4, game.world.centerY + game.world.centerY/2 + 50, '', { font: "15px Arial", fill: "#ffffff", align: "left" });
+
+    defenderInfo = game.add.text(game.world.centerX - game.world.centerX/4, game.world.centerY + game.world.centerY/2 + 50, '', { font: "15px Arial", fill: "#ffffff", align: "left" });
+
+
+
     game.stage.scale.pageAlignHorizontally = true;
     game.stage.scale.pageAlignVertically = true;
     game.scale.refresh();
@@ -348,7 +356,19 @@ window.onload = function() {
     } else if (this.state === 'placement') {
       placement(this);
     } else if (this.state === 'attack') {
+      // attackerInfo = game.add.text(game.world.centerX - 3*game.world.centerX/4, game.world.centerY + game.world.centerY/2 + 50, 'Attacker: ' + game.turn.name, { font: "15px Arial", fill: "#ffffff", align: "left" });
+      //
+      // defenderInfo = game.add.text(game.world.centerX - game.world.centerX/4, game.world.centerY + game.world.centerY/2 + 50, 'Defender:', { font: "15px Arial", fill: "#ffffff", align: "left" });
       attack(this);
+
+      if(this.selectedTerritory) attackerInfo.setText('Attacker: ' + this.selectedTerritory.owner.name +
+        '\n\nTerritory Name: ' + this.selectedTerritory.name + '\nTotal Units: ' + this.selectedTerritory.infantry);
+      else attackerInfo.setText('');
+
+      if(this.selectedEnemy) defenderInfo.setText('Enemy: ' + this.selectedEnemy.owner.name +
+        '\n\nTerritory Name: ' + this.selectedEnemy.name + '\nTotal Units: ' + this.selectedEnemy.infantry);
+      else defenderInfo.setText('');
+
     }
 
     playerName.setText(this.turn.name);
@@ -377,6 +397,6 @@ window.onload = function() {
   }
 
   function actionOnClick () {
-
+    console.log("hi");
   }
 }

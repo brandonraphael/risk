@@ -48,10 +48,18 @@ function attack(game){
   } else if (game.selectedTerritory !== null) {
     if (checkForAdjacentEnemy(game)) {
       console.log(game.selectedEnemy);
+      //
+      // defenderInfo.setText('Enemy: ' + game.selectedEnemy.owner.name +
+      //   '\n\nTerritory Name: ' + game.selectedEnemy.name + '\nTotal Units: ' + game.selectedEnemy.infantry);
+
+
     }
   } else if (game.selectedTerritory === null) {
     if (checkForOwnedTerritory(game)) {
       console.log(game.selectedTerritory);
+      // attackerInfo.setText('Attacker: ' + game.selectedTerritory.owner.name +
+      //   '\n\nTerritory Name: ' + game.selectedTerritory.name + '\nTotal Units: ' + game.selectedTerritory.infantry);
+
     }
   }
 }
@@ -62,6 +70,7 @@ function checkForOwnedTerritory(game) {
     if (territory.phaserObj.contains(game.input.x, game.input.y) && game.input.activePointer.isDown && territory.owner === game.turn && territory.infantry >= 2) {
       success = true;
       game.selectedTerritory = territory;
+      console.log("checkForOwnedTerritory");
     }
   });
   return success;
