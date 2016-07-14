@@ -1,7 +1,7 @@
 var playerTurn, ownedInfantry, ownedTerritories, ownedContinents, territoryText, button,
   attackerInfo, defenderInfo, attackerTerritoryName, defenderTerritoryName, attackerTotal;
 window.onload = function() {
-  var game = new Phaser.Game(900, 600, Phaser.AUTO, 'phaser-example', { preload: preload, create: create, update: update, render: render });
+  var game = new Phaser.Game(900, 600, Phaser.AUTO, 'phaser-example', { preload: preload, create: create, update: update, render: render, actionOnClick: actionOnClick });
   var rect;
   var peoria, sunCity, glendale, youngtown, northPhoenix, paradiseValley, caveCreek, northScottsdale, scottsdale, fountainHills, goodyear, park, avondale, tolleson, phoenix, chandler, northMesa, southPhoenix, chandler, gilbert, southMesa;
   var graphics;
@@ -20,6 +20,7 @@ window.onload = function() {
     this.state = 'gameStart';
     this.selectedTerritory = null;
     this.selectedEnemy = null;
+    this.stateCycle = ['placement', 'attack', 'movement']
     // rect = new Phaser.Rectangle(50, 50, 50, 50);
     // rect.neighbors = ['hello', 'world'];
 
@@ -322,7 +323,7 @@ window.onload = function() {
     // Set game Continents array
     this.continents = [northEastValley, northWestValley, eastValley, westValley, centralValley];
 
-    button = game.add.button(game.world.centerX + game.world.centerX/2, game.world.centerY - 71/2, 'button', actionOnClick, this, 2, 1, 0);
+    button = game.add.button(game.world.centerX + game.world.centerX/2, game.world.centerY - 71/2, 'button', this.actionOnClick, this, 2, 1, 0);
 
     game.add.text(game.world.centerX + game.world.centerX/4, game.world.centerY - 3 * game.world.centerY/4, 'Phoenix Valley Risk', { font: "35px Arial", fill: "#ffffff", align: "left"})
     game.add.text(game.world.centerX + game.world.centerX/2, game.world.centerY - 5 * game.world.centerY/8, '(Developer Edition)', { font: "10px Arial", fill: "#ffffff", align: "center"})
@@ -397,7 +398,9 @@ window.onload = function() {
     // console.log(rect);
   }
 
-  function actionOnClick () {
-    console.log("hi");
+  function actionOnClick() {
+    var idx = this.stateCycle.indexOf(this.state);
+    this.state = this.stateCycle[++idx % 3];
+    console.log(this.state);
   }
 }
