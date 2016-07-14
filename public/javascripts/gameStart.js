@@ -6,7 +6,7 @@ function gameStart(game) {
     game.turn = game.players[++game.turnIdx % 4];
     game.pieceCounter++;
   }
-  if (game.pieceCounter === 0) {
+  if (game.pieceCounter === 4) {
     game.state = 'placement';
     window.alert('It is now ' + game.turn.name + "'s turn.")
 
@@ -115,6 +115,6 @@ function movement(game) {
   } else if (game.moveFromTerritory !== null) {
     // click an adjacent friendly Territory'
   } else if (game.moveFromTerritory === null) {
-    
+
   }
 }
