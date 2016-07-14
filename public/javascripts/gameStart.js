@@ -6,7 +6,7 @@ function gameStart(game) {
     game.turn = game.players[++game.turnIdx % 4];
     game.pieceCounter++;
   }
-  if (game.pieceCounter === 4) {
+  if (game.pieceCounter === 40) {
     game.state = 'placement';
     window.alert('It is now ' + game.turn.name + "'s turn.")
 
@@ -44,6 +44,7 @@ function attack(game){
   if (game.selectedTerritory !== null && game.selectedEnemy !== null) {
     //Stuff to do rolling and killing and much death
     window.alert('Yayyy killing and stuff')
+    fight(game);
   } else if (game.selectedTerritory !== null) {
     if (checkForAdjacentEnemy(game)) {
       console.log(game.selectedEnemy);
@@ -75,6 +76,15 @@ function checkForAdjacentEnemy(game) {
     }
   });
   return success;
+}
+
+function fight(game) {
+  var battle = new Battle();
+  var winner = battle.solveBattle(game.selectedTerritory, game.selectedEnemy);
+  console.log(winner);
+  window.alert(winner.name + ' won the battle!');
+  game.selectedTerritory = null;
+  game.selectedEnemy = null;
 }
 
 module.exports = gameStart;
