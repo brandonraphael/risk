@@ -6,7 +6,7 @@ function gameStart(game) {
     game.turn = game.players[++game.turnIdx % 4];
     game.pieceCounter++;
   }
-  if (game.pieceCounter === 4) {
+  if (game.pieceCounter === 25) {
     game.state = 'placement';
     window.alert('It is now ' + game.turn.name + "'s turn.")
 
@@ -96,6 +96,14 @@ function fight(game) {
     game.selectedEnemy.updateOwner(game.turn);
     game.selectedEnemy.updateInfantry(1);
     game.selectedTerritory.updateInfantry(-1);
+    if (game.selectedTerritory.infantry >= 2) {
+      var answer = window.prompt('Move more infantry? ('+ (game.selectedTerritory.infantry - 1) + ' or less)');
+      console.log(answer);
+      if (Number(answer) < game.selectedTerritory.infantry) {
+        game.selectedEnemy.updateInfantry(Number(answer))
+        game.selectedTerritory.updateInfantry(-Number(answer));
+      }
+    }
   }
   game.selectedTerritory = null;
   game.selectedEnemy = null;
