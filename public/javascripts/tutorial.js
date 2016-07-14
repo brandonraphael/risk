@@ -290,8 +290,6 @@ window.onload = function() {
     graphics.drawPolygon(mesa.points);
     graphics.endFill();
 
-    console.log(game);
-
     // Setting Neighbor Territories
     peoriaTerritory.setNeighbors([sunCityTerritory, glendaleTerritory, youngtownTerritory, northPhoenixTerritory]);
     sunCityTerritory.setNeighbors([peoriaTerritory, youngtownTerritory]);
@@ -349,7 +347,7 @@ window.onload = function() {
     defenderInfo = game.add.text(game.world.centerX - game.world.centerX/4, game.world.centerY + game.world.centerY/2 + 50, '', { font: "15px Arial", fill: "#ffffff", align: "left" });
 
     this.territories.forEach(function(territory){
-      territory.text = (game.add.text(territory.phaserObj.points[0].x, territory.phaserObj.points[0].y, territory.infantry, { font: "15px Arial", fill: "#000", align: "center" }));
+      territory.text = (game.add.text(territory.phaserObj.points[0].x, territory.phaserObj.points[0].y, territory.infantry, { font: "20px Times New Roman", fill: "#000", align: "center" }));
     });
 
     game.stage.scale.pageAlignHorizontally = true;
@@ -408,15 +406,6 @@ window.onload = function() {
         territoryText.setText('Territory: ' + cursorView.name + '\nOwner: ' + cursorView.owner.name + '\nInfantry: ' + cursorView.infantry);
       }
     }
-
-    // if (poly.contains(game.input.x, game.input.y) && game.input.activePointer.isDown && this.state==='movementPartOne') {
-    //   console.log('hi');
-    //   this.state = 'movementPartTwo';
-    // }
-    // if (game.input.activePointer.isDown && (game.input.activePointer.x >= rect.x && game.input.activePointer.x <= rect.x + rect.width && game.input.activePointer.y >= rect.y && game.input.activePointer.y <= rect.y + rect.height)) {
-    //   console.log('clicked me!');
-    // }
-    // console.log(rect);
   }
 
   function actionOnClick() {
@@ -432,6 +421,5 @@ window.onload = function() {
       this.selectedEnemy = null;
     }
     this.state = this.stateCycle[++idx % 3];
-    console.log(this.state);
   }
 }
