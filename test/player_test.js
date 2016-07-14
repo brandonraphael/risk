@@ -75,4 +75,27 @@ describe('Player', function(){
     var westValley = new Continent('West Valley', [goodyearTerritory, avondaleTerritory, parkTerritory], 3);
     expect(rosarita.getBonus([westValley, northWestValley])).to.equal(7);
   });
-});
+  it('should be able to remove a territory', function() {
+    var rosarita = new Player('Rosarita');
+    var goodyearTerritory = new Territory('goodyear')
+    var avondaleTerritory = new Territory('avondale')
+    var parkTerritory = new Territory('park')
+    rosarita.addTerritory(goodyearTerritory);
+    rosarita.addTerritory(avondaleTerritory);
+    rosarita.addTerritory(parkTerritory);
+    rosarita.removeTerritory(avondaleTerritory);
+    expect(rosarita.territories).to.deep.equal([goodyearTerritory, parkTerritory])
+  });
+  it('should be able to remove multiple territory', function() {
+    var rosarita = new Player('Rosarita');
+    var goodyearTerritory = new Territory('goodyear')
+    var avondaleTerritory = new Territory('avondale')
+    var parkTerritory = new Territory('park')
+    rosarita.addTerritory(goodyearTerritory);
+    rosarita.addTerritory(avondaleTerritory);
+    rosarita.addTerritory(parkTerritory);
+    rosarita.removeTerritory(avondaleTerritory);
+    rosarita.removeTerritory(goodyearTerritory);
+
+    expect(rosarita.territories).to.deep.equal([parkTerritory])
+  });});

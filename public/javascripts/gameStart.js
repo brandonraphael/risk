@@ -3,7 +3,7 @@ function gameStart(game) {
   if (placePiece(game.territories, game, game.turn)) {
     console.log(game.turn);
     window.alert(game.turn.name + ' has placed a unit');
-    game.turn = game.players[++game.turnIdx % 4];
+    game.turn = game.players[++game.turnIdx % game.numPlayers];
     game.pieceCounter++;
   }
   if (game.pieceCounter === 4) {
@@ -45,6 +45,8 @@ function attack(game){
     //Stuff to do rolling and killing and much death
     window.alert('Yayyy killing and stuff')
     fight(game);
+    elminatePlayer(game);
+    declareWinner(game);
   } else if (game.selectedTerritory !== null) {
     if (checkForAdjacentEnemy(game)) {
       console.log(game.selectedEnemy);
@@ -118,7 +120,7 @@ function movement(game) {
       game.moveToTerritory.updateInfantry(numTroops);
       game.moveFromTerritory.updateInfantry(-numTroops);
       game.state = 'placement';
-      game.turn = game.players[++game.turnIdx % 4];
+      game.turn = game.players[++game.turnIdx % game.numPlayers];
       console.log(game.turn);
       game.playerInfantry = numNewInfantry(game.turn, game);
       game.moveToTerritory = null;
@@ -148,4 +150,21 @@ function checkForAdjacentOwnedTerritory(game) {
     }
   });
   return success;
+}
+
+function elminatePlayer(game) {
+  game.players.forEach(function(player, idx, players) {
+    if (player.territories.length === 0) {
+      players.splice(idx, 1);
+    }
+  });
+  console.log(game.players);
+  game.numPlayers = game.players.length;
+  window.alert('A player has been eliminated!');
+}
+
+function declareWinner(game) {
+ if (game.players.length === 1) {
+   window.alert(game.players[0] + ' is the winner!!!!!!!!!1!')
+ }
 }

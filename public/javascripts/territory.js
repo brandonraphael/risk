@@ -9,6 +9,9 @@ function Territory(name, phaserObj){
 }
 
 Territory.prototype.updateOwner = function (owner) {
+  if (this.owner !== null) {
+    this.owner.removeTerritory(this);
+  }
   this.owner = owner;
   if (owner.territories.indexOf(this) === -1) {
     this.owner.addTerritory(this);

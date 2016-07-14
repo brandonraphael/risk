@@ -33,4 +33,11 @@ Player.prototype.getBonus = function(continents) {
   }, 0)
 }
 
+
+Player.prototype.removeTerritory = function(territory) {
+  var newTerritories = this.territories.filter(function(singleTerritory) {
+    return territory !== singleTerritory
+  });
+  this.territories = newTerritories;
+}
 module.exports = Player;
