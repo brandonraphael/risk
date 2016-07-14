@@ -1,5 +1,6 @@
 var playerTurn, ownedInfantry, ownedTerritories, ownedContinents, territoryText, button,
   attackerInfo, defenderInfo, phase;
+
 window.onload = function() {
   var game = new Phaser.Game(900, 600, Phaser.AUTO, 'phaser-example', { preload: preload, create: create, update: update, render: render, actionOnClick: actionOnClick });
   var rect;
@@ -45,7 +46,7 @@ window.onload = function() {
     sunCity = new Phaser.Polygon();
     // Sun City
     //  And then populate it via setTo, using any combination of values as above
-    sunCity.setTo([new Phaser.Point(125, 100), new Phaser.Point(25, 100), new Phaser.Point(25, 175), new Phaser.Point(125, 175) ]);
+    sunCity.setTo([ new Phaser.Point(25, 100), new Phaser.Point(25, 175), new Phaser.Point(125, 175), new Phaser.Point(125, 100) ]);
 
     var sunCityTerritory = new Territory('Sun City', sunCity);
 
@@ -59,7 +60,7 @@ window.onload = function() {
 
     // Youngtown
     //  And then populate it via setTo, using any combination of values as above
-    youngtown.setTo([new Phaser.Point(125, 175), new Phaser.Point(100, 175), new Phaser.Point(100, 225), new Phaser.Point(125, 225) ]);
+    youngtown.setTo([ new Phaser.Point(100, 175), new Phaser.Point(100, 225), new Phaser.Point(125, 225), new Phaser.Point(125, 175) ]);
 
     var youngtownTerritory = new Territory('Youngtown', youngtown);
 
@@ -85,7 +86,7 @@ window.onload = function() {
     northPhoenix = new Phaser.Polygon();
     // North phoenix
     //  And then populate it via setTo, using any combination of values as above
-    northPhoenix.setTo([new Phaser.Point(225, 250), new Phaser.Point(225, 100), new Phaser.Point(175, 100), new Phaser.Point(175, 60), new Phaser.Point(350, 60), new Phaser.Point(350, 200), new Phaser.Point(300, 200), new Phaser.Point(300, 250)]);
+    northPhoenix.setTo([new Phaser.Point(175, 60), new Phaser.Point(350, 60), new Phaser.Point(350, 200), new Phaser.Point(300, 200), new Phaser.Point(300, 250), new Phaser.Point(225, 250), new Phaser.Point(225, 100), new Phaser.Point(175, 100)]);
 
     var northPhoenixTerritory = new Territory('North Phoenix', northPhoenix);
 
@@ -111,7 +112,7 @@ window.onload = function() {
     caveCreek = new Phaser.Polygon();
     // cave creek
     //  And then populate it via setTo, using any combination of values as above
-    caveCreek.setTo([new Phaser.Point(300, 60), new Phaser.Point(300,10), new Phaser.Point(375, 10), new Phaser.Point(375, 60) ]);
+    caveCreek.setTo([new Phaser.Point(300,10), new Phaser.Point(375, 10), new Phaser.Point(375, 60),new Phaser.Point(300, 60) ]);
 
     var caveCreekTerritory = new Territory('Cave Creek', caveCreek);
 
@@ -124,7 +125,7 @@ window.onload = function() {
     northScottsdale = new Phaser.Polygon();
     // north scottsdale
     //  And then populate it via setTo, using any combination of values as above
-    northScottsdale.setTo([new Phaser.Point(375, 60), new Phaser.Point(375, 10), new Phaser.Point(450, 10), new Phaser.Point(450, 190), new Phaser.Point(350, 190), new Phaser.Point(350, 60)]);
+    northScottsdale.setTo([new Phaser.Point(350, 60),new Phaser.Point(375, 60), new Phaser.Point(375, 10), new Phaser.Point(450, 10), new Phaser.Point(450, 190), new Phaser.Point(350, 190)]);
 
     var northScottsdaleTerritory = new Territory('North Scottsdale', northScottsdale);
 
@@ -150,7 +151,7 @@ window.onload = function() {
     fountainHills = new Phaser.Polygon();
     // fountain hills
     //  And then populate it via setTo, using any combination of values as above
-    fountainHills.setTo([new Phaser.Point(450, 220), new Phaser.Point(500, 220), new Phaser.Point(500, 170), new Phaser.Point(450, 170)]);
+    fountainHills.setTo([new Phaser.Point(450, 170), new Phaser.Point(450, 220), new Phaser.Point(500, 220), new Phaser.Point(500, 170)]);
 
     var fountainHillsTerritory = new Territory('Fountain Hills', fountainHills);
 
@@ -163,7 +164,7 @@ window.onload = function() {
     phoenix = new Phaser.Polygon();
     // phoenix
     //  And then populate it via setTo, using any combination of values as above
-    phoenix.setTo([new Phaser.Point(350, 250), new Phaser.Point(350, 300), new Phaser.Point(325, 300), new Phaser.Point(325, 350), new Phaser.Point(190, 350), new Phaser.Point(190, 325), new Phaser.Point(150, 325), new Phaser.Point(150, 250)]);
+    phoenix.setTo([new Phaser.Point(150, 250), new Phaser.Point(350, 250), new Phaser.Point(350, 300), new Phaser.Point(325, 300), new Phaser.Point(325, 350), new Phaser.Point(190, 350), new Phaser.Point(190, 325), new Phaser.Point(150, 325)]);
 
     var phoenixTerritory = new Territory('Phoenix', phoenix);
 
@@ -176,7 +177,7 @@ window.onload = function() {
     tolleson = new Phaser.Polygon();
     // tolleson
     //  And then populate it via setTo, using any combination of values as above
-    tolleson.setTo([new Phaser.Point(190, 325), new Phaser.Point(190, 350), new Phaser.Point(130, 350), new Phaser.Point(130, 325)]);
+    tolleson.setTo([new Phaser.Point(130, 325), new Phaser.Point(190, 325), new Phaser.Point(190, 350), new Phaser.Point(130, 350)]);
 
     var tollesonTerritory = new Territory('Tolleson', tolleson);
 
@@ -189,7 +190,7 @@ window.onload = function() {
     avondale = new Phaser.Polygon();
     // avondale
     //  And then populate it via setTo, using any combination of values as above
-    avondale.setTo([new Phaser.Point(130, 350), new Phaser.Point(150, 350), new Phaser.Point(150, 400), new Phaser.Point(100, 400), new Phaser.Point(100, 275), new Phaser.Point(125, 275), new Phaser.Point(125, 260), new Phaser.Point(150, 260), new Phaser.Point(150, 325), new Phaser.Point(130, 325)]);
+    avondale.setTo([new Phaser.Point(100, 275), new Phaser.Point(125, 275), new Phaser.Point(125, 260), new Phaser.Point(150, 260), new Phaser.Point(150, 325), new Phaser.Point(130, 325), new Phaser.Point(130, 350), new Phaser.Point(150, 350), new Phaser.Point(150, 400), new Phaser.Point(100, 400)]);
 
     var avondaleTerritory = new Territory('Avondale', avondale);
 
@@ -202,7 +203,7 @@ window.onload = function() {
     park = new Phaser.Polygon();
     // park
     //  And then populate it via setTo, using any combination of values as above
-    park.setTo([new Phaser.Point(125, 275), new Phaser.Point(90, 275), new Phaser.Point(90, 255), new Phaser.Point(125, 255)]);
+    park.setTo([new Phaser.Point(90, 255), new Phaser.Point(125, 255), new Phaser.Point(125, 275), new Phaser.Point(90, 275)]);
 
     var parkTerritory = new Territory('Park', park);
 
@@ -215,10 +216,9 @@ window.onload = function() {
     goodyear = new Phaser.Polygon();
     // goodyear
     //  And then populate it via setTo, using any combination of values as above
-    goodyear.setTo([ new Phaser.Point(90, 255), new Phaser.Point(90, 275), new Phaser.Point(100, 275), new Phaser.Point(100, 450), new Phaser.Point(40, 450), new Phaser.Point(40, 255)]);
+    goodyear.setTo([new Phaser.Point(40, 255), new Phaser.Point(90, 255), new Phaser.Point(90, 275), new Phaser.Point(100, 275), new Phaser.Point(100, 450), new Phaser.Point(40, 450)]);
 
     var goodyearTerritory = new Territory('Goodyear', goodyear);
-
     graphics.beginFill(0xff3300);
     graphics.drawPolygon(goodyear.points);
     graphics.endFill();
@@ -259,7 +259,7 @@ window.onload = function() {
     gilbert = new Phaser.Polygon();
     // gilbert
     //  And then populate it via setTo, using any combination of values as above
-    gilbert.setTo([ new Phaser.Point(400, 425), new Phaser.Point(500, 425), new Phaser.Point(500, 350), new Phaser.Point(400,350)]);
+    gilbert.setTo([new Phaser.Point(400,350), new Phaser.Point(400, 425), new Phaser.Point(500, 425), new Phaser.Point(500, 350)]);
 
     var gilbertTerritory = new Territory('Gilbert', gilbert);
 
@@ -270,7 +270,7 @@ window.onload = function() {
     southMesa = new Phaser.Polygon();
     // southMesa
     //  And then populate it via setTo, using any combination of values as above
-    southMesa.setTo([new Phaser.Point(400,350), new Phaser.Point(400,375), new Phaser.Point(375,375), new Phaser.Point(375,310), new Phaser.Point(575,310), new Phaser.Point(575,375), new Phaser.Point(500,375), new Phaser.Point(500,350)]);
+    southMesa.setTo([new Phaser.Point(375,310), new Phaser.Point(575,310), new Phaser.Point(575,375), new Phaser.Point(500,375), new Phaser.Point(500,350), new Phaser.Point(400,350), new Phaser.Point(400,375), new Phaser.Point(375,375)]);
 
     var southMesaTerritory = new Territory('South Mesa', southMesa);
 
@@ -281,13 +281,15 @@ window.onload = function() {
     mesa = new Phaser.Polygon();
     // mesa
     //  And then populate it via setTo, using any combination of values as above
-    mesa.setTo([new Phaser.Point(375,310), new Phaser.Point(375, 260), new Phaser.Point(575, 260), new Phaser.Point(575, 310)]);
+    mesa.setTo([new Phaser.Point(375, 260), new Phaser.Point(575, 260), new Phaser.Point(575, 310), new Phaser.Point(375,310)]);
 
     var mesaTerritory = new Territory('Mesa', mesa);
 
     graphics.beginFill(0xff99ff);
     graphics.drawPolygon(mesa.points);
     graphics.endFill();
+
+    console.log(game);
 
     // Setting Neighbor Territories
     peoriaTerritory.setNeighbors([sunCityTerritory, glendaleTerritory, youngtownTerritory, northPhoenixTerritory]);
@@ -345,17 +347,27 @@ window.onload = function() {
 
     defenderInfo = game.add.text(game.world.centerX - game.world.centerX/4, game.world.centerY + game.world.centerY/2 + 50, '', { font: "15px Arial", fill: "#ffffff", align: "left" });
 
-
+    this.territories.forEach(function(territory){
+      territory.text = (game.add.text(territory.phaserObj.points[0].x, territory.phaserObj.points[0].y, territory.infantry, { font: "15px Arial", fill: "#000", align: "center" }));
+    });
 
     game.stage.scale.pageAlignHorizontally = true;
     game.stage.scale.pageAlignVertically = true;
     game.scale.refresh();
+
   }
 
+  function updateTerritoriesText(territories){
+    territories.forEach(function(territory){
+      territory.text.setText(territory.infantry);
+    });
+  }
   function render() {
     // game.debug.rectangle(rect);  ``
   }
   function update() {
+    updateTerritoriesText(this.territories);
+    ///territory.text.setText(territory.infantry);
     if (this.state === 'gameStart') {
       phase.setText('Current Phase: Gamestart');
       gameStart(this);
