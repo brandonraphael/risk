@@ -6,7 +6,7 @@ function gameStart(game) {
     game.turn = game.players[++game.turnIdx % 4];
     game.pieceCounter++;
   }
-  if (game.pieceCounter === 4) {
+  if (game.pieceCounter === 12) {
     game.state = 'placement';
     window.alert('It is now ' + game.turn.name + "'s turn.")
 
@@ -112,13 +112,40 @@ function fight(game) {
 function movement(game) {
   if(game.moveFromTerritory !== null && game.moveToTerritory !== null) {
     // movement
+    var answer = window.prompt('Move how many infantry from ' + game.moveFromTerritory.name + ' to ' + game.moveToTerritory.name + ' ? (maximum of '+ (game.moveFromTerritory.infantry - 1) + ')');
+    var numTroops = Number(answer);
+    if (!isNaN(numTroops)){
+      game.moveToTerritory.updateInfantry(numTroops);
+      game.moveFromTerritory.updateInfantry(-numTroops);
+      game.state = 'placement';
+      game.turn = game.players[++game.turnIdx % 4];
+      console.log(game.turn);
+      game.playerInfantry = numNewInfantry(game.turn, game);
+      game.moveToTerritory = null;
+      game.moveFromTerritory = null;
+    }
   } else if (game.moveFromTerritory !== null) {
-    // click an adjacent friendly Territory'
+    if (checkForAdjacentOwnedTerritory(game)) {
+      console.log(game.moveToTerritory);
+      // window.alert('move units to ' + game.moveToTerritory.name)
+    }
   } else if (game.moveFromTerritory === null) {
     if (checkForOwnedTerritory(game)) {
       game.moveFromTerritory = game.selectedTerritory;
       game.selectedTerritory = null;
       console.log(game.moveFromTerritory);
+      // window.alert('move units from ' + game.moveFromTerritory.name);
     }
   }
+}
+
+function checkForAdjacentOwnedTerritory(game) {
+  var success = false;
+  game.territories.forEach(function(territory) {
+    if (territory.phaserObj.contains(game.input.x, game.input.y) && game.input.activePointer.isDown && territory.owner === game.turn && territory.neighbors.indexOf(game.moveFromTerritory) !== -1) {
+      game.moveToTerritory = territory;
+      success = true;
+    }
+  });
+  return success;
 }
