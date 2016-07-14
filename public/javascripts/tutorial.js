@@ -1,5 +1,5 @@
 var playerTurn, ownedInfantry, ownedTerritories, ownedContinents, territoryText, button,
-  attackerInfo, defenderInfo, attackerTerritoryName, defenderTerritoryName, attackerTotal;
+  attackerInfo, defenderInfo, phase;
 window.onload = function() {
   var game = new Phaser.Game(900, 600, Phaser.AUTO, 'phaser-example', { preload: preload, create: create, update: update, render: render, actionOnClick: actionOnClick });
   var rect;
@@ -327,6 +327,8 @@ window.onload = function() {
 
     button = game.add.button(game.world.centerX + game.world.centerX/2, game.world.centerY - 71/2, 'button', this.actionOnClick, this, 2, 1, 0);
 
+    phase = game.add.text(game.world.centerX + game.world.centerX/2, game.world.centerY - 71/2 - 30, '', { font: "15px Arial", fontWeight: "bold", fill: "#ff0000", align: "left" });
+
     button.visible = false;
     game.add.text(game.world.centerX + game.world.centerX/4, game.world.centerY - 3 * game.world.centerY/4, 'Phoenix Valley Risk', { font: "35px Arial", fill: "#ffffff", align: "left"})
     game.add.text(game.world.centerX + game.world.centerX/2, game.world.centerY - 5 * game.world.centerY/8, '(Developer Edition)', { font: "10px Arial", fill: "#ffffff", align: "center"})
@@ -355,11 +357,14 @@ window.onload = function() {
   }
   function update() {
     if (this.state === 'gameStart') {
+      phase.setText('Current Phase: Gamestart');
       gameStart(this);
     } else if (this.state === 'placement') {
+      phase.setText('Current Phase: Placement');
       button.visible = false;
       placement(this);
     } else if (this.state === 'attack') {
+      phase.setText('Current Phase: Attack');
       button.visible = true;
       attack(this);
 
@@ -372,7 +377,7 @@ window.onload = function() {
       else defenderInfo.setText('');
 
     } else if (this.state === 'movement') {
-
+      phase.setText('Current Phase: Movement');
       movement(this);
     }
 
