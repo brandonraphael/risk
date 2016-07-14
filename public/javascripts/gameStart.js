@@ -6,7 +6,7 @@ function gameStart(game) {
     game.turn = game.players[++game.turnIdx % 4];
     game.pieceCounter++;
   }
-  if (game.pieceCounter === 40) {
+  if (game.pieceCounter === 4) {
     game.state = 'placement';
     window.alert('It is now ' + game.turn.name + "'s turn.")
 
@@ -51,7 +51,7 @@ function attack(game){
     }
   } else if (game.selectedTerritory === null) {
     if (checkForOwnedTerritory(game)) {
-    console.log(game.selectedTerritory);
+      console.log(game.selectedTerritory);
     }
   }
 }
@@ -86,5 +86,3 @@ function fight(game) {
   game.selectedTerritory = null;
   game.selectedEnemy = null;
 }
-
-module.exports = gameStart;
