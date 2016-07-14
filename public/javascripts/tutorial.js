@@ -23,6 +23,7 @@ window.onload = function() {
     this.stateCycle = ['placement', 'attack', 'movement'];
     this.moveFromTerritory = null;
     this.moveToTerritory = null;
+    this.numPlayers = 4;
     // rect = new Phaser.Rectangle(50, 50, 50, 50);
     // rect.neighbors = ['hello', 'world'];
 
@@ -409,7 +410,7 @@ window.onload = function() {
   function actionOnClick() {
     var idx = this.stateCycle.indexOf(this.state);
     if (this.state === 'movement') {
-      this.turn = this.players[++this.turnIdx % 4];
+      this.turn = this.players[++this.turnIdx % this.numPlayers];
       this.playerInfantry = numNewInfantry(this.turn, this);
       this.moveToTerritory = null;
       this.moveFromTerritory = null;
