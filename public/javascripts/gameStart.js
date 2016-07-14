@@ -115,14 +115,10 @@ function movement(game) {
   } else if (game.moveFromTerritory !== null) {
     // click an adjacent friendly Territory'
   } else if (game.moveFromTerritory === null) {
-<<<<<<< HEAD
     if (checkForOwnedTerritory(game)) {
       game.moveFromTerritory = game.selectedTerritory;
       game.selectedTerritory = null;
       console.log(game.moveFromTerritory);
     }
-=======
-
->>>>>>> 91d13f2c1b2433d9a65ea99a70bc5e0d1cda38f9
   }
 }
