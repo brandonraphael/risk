@@ -327,6 +327,7 @@ window.onload = function() {
 
     button = game.add.button(game.world.centerX + game.world.centerX/2, game.world.centerY - 71/2, 'button', this.actionOnClick, this, 2, 1, 0);
 
+    button.visible = false;
     game.add.text(game.world.centerX + game.world.centerX/4, game.world.centerY - 3 * game.world.centerY/4, 'Phoenix Valley Risk', { font: "35px Arial", fill: "#ffffff", align: "left"})
     game.add.text(game.world.centerX + game.world.centerX/2, game.world.centerY - 5 * game.world.centerY/8, '(Developer Edition)', { font: "10px Arial", fill: "#ffffff", align: "center"})
 
@@ -356,9 +357,12 @@ window.onload = function() {
     if (this.state === 'gameStart') {
       gameStart(this);
     } else if (this.state === 'placement') {
+      button.visible = false;
       placement(this);
     } else if (this.state === 'attack') {
+      button.visible = true;
       attack(this);
+
       if(this.selectedTerritory) attackerInfo.setText('Attacker: ' + this.selectedTerritory.owner.name +
         '\n\nTerritory Name: ' + this.selectedTerritory.name + '\nTotal Units: ' + this.selectedTerritory.infantry);
       else attackerInfo.setText('');
@@ -368,6 +372,7 @@ window.onload = function() {
       else defenderInfo.setText('');
 
     } else if (this.state === 'movement') {
+
       movement(this);
     }
 
