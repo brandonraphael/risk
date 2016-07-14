@@ -422,10 +422,14 @@ window.onload = function() {
   function actionOnClick() {
     var idx = this.stateCycle.indexOf(this.state);
     if (this.state === 'movement') {
-      this.turn = this.players[++this.turnIdx % this.numPlayers];
+      var playerIdx = this.players.indexOf(this.turn);
+      this.turn = this.players[++playerIdx % this.numPlayers];
       this.playerInfantry = numNewInfantry(this.turn, this);
       this.moveToTerritory = null;
       this.moveFromTerritory = null;
+    } else if (this.state === 'attack') {
+      this.selectedTerritory = null;
+      this.selectedEnemy = null;
     }
     this.state = this.stateCycle[++idx % 3];
     console.log(this.state);

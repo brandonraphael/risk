@@ -15,7 +15,7 @@ function gameStart(game) {
 }
 
 function numNewInfantry(player, game) {
-  return Math.floor((player.territories.length/3) + (player.getBonus(game.continents))) || 1;
+  return Math.floor((player.territories.length/2) + (player.getBonus(game.continents))) || 1;
 }
 
 function placement(game) {
@@ -116,11 +116,12 @@ function movement(game) {
     // movement
     var answer = window.prompt('Move how many infantry from ' + game.moveFromTerritory.name + ' to ' + game.moveToTerritory.name + ' ? (maximum of '+ (game.moveFromTerritory.infantry - 1) + ')');
     var numTroops = Number(answer);
-    if (!isNaN(numTroops)){
+    if (!isNaN(numTroops) && numTroops >= 0 && numTroops <= game.moveFromTerritory.infantry - 1){
       game.moveToTerritory.updateInfantry(numTroops);
       game.moveFromTerritory.updateInfantry(-numTroops);
       game.state = 'placement';
-      game.turn = game.players[++game.turnIdx % game.numPlayers];
+      var playerIdx = game.players.indexOf(game.turn);
+      game.turn = game.players[++playerIdx % game.numPlayers];
       console.log(game.turn);
       game.playerInfantry = numNewInfantry(game.turn, game);
       game.moveToTerritory = null;
@@ -156,11 +157,11 @@ function elminatePlayer(game) {
   game.players.forEach(function(player, idx, players) {
     if (player.territories.length === 0) {
       players.splice(idx, 1);
+      window.alert('A player has been eliminated!');
     }
   });
   console.log(game.players);
   game.numPlayers = game.players.length;
-  window.alert('A player has been eliminated!');
 }
 
 function declareWinner(game) {
