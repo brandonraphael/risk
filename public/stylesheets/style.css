@@ -1,6 +1,11 @@
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: url('http://vignette3.wikia.nocookie.net/risk-of-rain/images/5/50/Wiki-background/revision/20140728071601') center center no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
 }
 
 a {
@@ -17,4 +22,12 @@ h3 {
   bottom: 0;
   right: 0;
   left: 0;
+}
+
+canvas {
+  text-align: center;
+  margin: auto;
+  margin-top: 100px;
+  background-color: rgba(0, 0, 0, 0);
+
 }
