@@ -408,6 +408,12 @@ window.onload = function() {
 
   function actionOnClick() {
     var idx = this.stateCycle.indexOf(this.state);
+    if (this.state === 'movement') {
+      this.turn = this.players[++this.turnIdx % 4];
+      this.playerInfantry = numNewInfantry(this.turn, this);
+      this.moveToTerritory = null;
+      this.moveFromTerritory = null;
+    }
     this.state = this.stateCycle[++idx % 3];
     console.log(this.state);
   }

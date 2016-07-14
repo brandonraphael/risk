@@ -6,7 +6,7 @@ function gameStart(game) {
     game.turn = game.players[++game.turnIdx % 4];
     game.pieceCounter++;
   }
-  if (game.pieceCounter === 12) {
+  if (game.pieceCounter === 4) {
     game.state = 'placement';
     window.alert('It is now ' + game.turn.name + "'s turn.")
 

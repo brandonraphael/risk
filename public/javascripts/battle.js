@@ -25,8 +25,8 @@ Battle.prototype.solveBattle = function(attacker, defender){
 
 Battle.prototype.getAttackerRoll = function(attackerInfantry) {
   var attackerRoll = {
-    1: this.diceEmulator.roll(1),
-    2: this.diceEmulator.roll(2),
+    2: this.diceEmulator.roll(1),
+    3: this.diceEmulator.roll(2),
     'default': this.diceEmulator.roll(3)
   }
   return (attackerRoll[attackerInfantry] || attackerRoll['default']);
