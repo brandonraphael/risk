@@ -108,3 +108,13 @@ function fight(game) {
   game.selectedTerritory = null;
   game.selectedEnemy = null;
 }
+
+function movement(game) {
+  if(game.moveFromTerritory !== null && game.moveToTerritory !== null) {
+    // movement
+  } else if (game.moveFromTerritory !== null) {
+    // click an adjacent friendly Territory'
+  } else if (game.moveFromTerritory === null) {
+    
+  }
+}

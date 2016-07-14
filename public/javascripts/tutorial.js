@@ -20,6 +20,9 @@ window.onload = function() {
     this.state = 'gameStart';
     this.selectedTerritory = null;
     this.selectedEnemy = null;
+    this.stateCycle = ['placement', 'attack', 'movement'];
+    this.moveFromTerritory = null;
+    this.moveToTerritory = null;
     // rect = new Phaser.Rectangle(50, 50, 50, 50);
     // rect.neighbors = ['hello', 'world'];
 
@@ -356,11 +359,7 @@ window.onload = function() {
     } else if (this.state === 'placement') {
       placement(this);
     } else if (this.state === 'attack') {
-      // attackerInfo = game.add.text(game.world.centerX - 3*game.world.centerX/4, game.world.centerY + game.world.centerY/2 + 50, 'Attacker: ' + game.turn.name, { font: "15px Arial", fill: "#ffffff", align: "left" });
-      //
-      // defenderInfo = game.add.text(game.world.centerX - game.world.centerX/4, game.world.centerY + game.world.centerY/2 + 50, 'Defender:', { font: "15px Arial", fill: "#ffffff", align: "left" });
       attack(this);
-
       if(this.selectedTerritory) attackerInfo.setText('Attacker: ' + this.selectedTerritory.owner.name +
         '\n\nTerritory Name: ' + this.selectedTerritory.name + '\nTotal Units: ' + this.selectedTerritory.infantry);
       else attackerInfo.setText('');
@@ -369,8 +368,8 @@ window.onload = function() {
         '\n\nTerritory Name: ' + this.selectedEnemy.name + '\nTotal Units: ' + this.selectedEnemy.infantry);
       else defenderInfo.setText('');
 
-    } else if(this.state === 'movement'){
-      //do some shit
+    } else if (this.state === 'movement') {
+      movement(this);
     }
 
     playerName.setText(this.turn.name);
