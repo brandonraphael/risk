@@ -60,6 +60,7 @@ Battle.prototype.compareRolls = function (attackerRoll, defenderRoll, attackOwne
 
   if(results.attacker > results.defender) results.winner = attackOwner;
   if(results.attacker < results.defender) results.winner = defendOwner;
+  if(results.attacker === results.defender) results.winner =  {name: 'Nobody'}
 
   return results;
 };

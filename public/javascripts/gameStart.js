@@ -33,6 +33,8 @@ function placeNewInfantry(game) {
       game.playerInfantry--;
       window.alert(game.turn.name + ' has ' + game.playerInfantry + ' units left to place')
       success = true;
+      console.log("");
+      console.log("too");
     }
   });
   return success;
