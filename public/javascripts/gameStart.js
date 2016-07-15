@@ -4,7 +4,7 @@ function gameStart(game) {
     game.turn = game.players[++game.turnIdx % game.numPlayers];
     game.pieceCounter++;
   }
-  if (game.pieceCounter === 24) {
+  if (game.pieceCounter === 4) {
     game.state = 'placement';
     window.alert('It is now ' + game.turn.name + "'s turn.")
 
@@ -45,7 +45,8 @@ function attack(game){
     elminatePlayer(game);
     declareWinner(game);
   } else if (game.selectedTerritory !== null) {
-    checkForAdjacentEnemy(game)
+    checkForAdjacentEnemy(game);
+    checkForOwnedTerritory(game);
   } else if (game.selectedTerritory === null) {
     checkForOwnedTerritory(game);
   }
