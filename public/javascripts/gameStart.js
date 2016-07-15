@@ -76,7 +76,7 @@ function checkForAdjacentEnemy(game) {
 function fight(game) {
   var battle = new Battle();
   var winner = battle.solveBattle(game.selectedTerritory, game.selectedEnemy);
-  window.alert(winner + ' won the battle!');
+  window.alert(winner.name + ' won the battle!');
   if(game.selectedEnemy.infantry === 0){
 
     game.selectedEnemy.updateOwner(game.turn);
