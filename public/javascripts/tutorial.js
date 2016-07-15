@@ -104,7 +104,7 @@ window.onload = function() {
 
     var paradiseValleyTerritory = new Territory('Paradise Valley', paradiseValley);
 
-    color = 0xc00ffff;
+    color = 0x4477ff;
     paradiseValleyTerritory.color = color;
     graphics.beginFill(color);
     graphics.drawPolygon(paradiseValley.points);
@@ -156,7 +156,7 @@ window.onload = function() {
 
     var fountainHillsTerritory = new Territory('Fountain Hills', fountainHills);
 
-    color = 0x0000ff;
+    color = 0x0044ff;
     fountainHillsTerritory.color = color;
     graphics.beginFill(color);
     graphics.drawPolygon(fountainHills.points);
