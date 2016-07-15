@@ -1,8 +1,6 @@
 // var Player = require('./player');
 function gameStart(game) {
   if (placePiece(game.territories, game, game.turn)) {
-    console.log(game.turn);
-    window.alert(game.turn.name + ' has placed a unit');
     game.turn = game.players[++game.turnIdx % game.numPlayers];
     game.pieceCounter++;
   }
@@ -33,7 +31,6 @@ function placeNewInfantry(game) {
       territory.updateInfantry(1);
       game.playerInfantry--;
       window.alert(game.turn.name + ' has ' + game.playerInfantry + ' units left to place')
-      console.log(game.turn);
       success = true;
     }
   });
@@ -48,21 +45,9 @@ function attack(game){
     elminatePlayer(game);
     declareWinner(game);
   } else if (game.selectedTerritory !== null) {
-    if (checkForAdjacentEnemy(game)) {
-      console.log(game.selectedEnemy);
-      //
-      // defenderInfo.setText('Enemy: ' + game.selectedEnemy.owner.name +
-      //   '\n\nTerritory Name: ' + game.selectedEnemy.name + '\nTotal Units: ' + game.selectedEnemy.infantry);
-
-
-    }
+    checkForAdjacentEnemy(game)
   } else if (game.selectedTerritory === null) {
-    if (checkForOwnedTerritory(game)) {
-      console.log(game.selectedTerritory);
-      // attackerInfo.setText('Attacker: ' + game.selectedTerritory.owner.name +
-      //   '\n\nTerritory Name: ' + game.selectedTerritory.name + '\nTotal Units: ' + game.selectedTerritory.infantry);
-
-    }
+    checkForOwnedTerritory(game);
   }
 }
 
@@ -72,7 +57,6 @@ function checkForOwnedTerritory(game) {
     if (territory.phaserObj.contains(game.input.x, game.input.y) && game.input.activePointer.isDown && territory.owner === game.turn && territory.infantry >= 2) {
       success = true;
       game.selectedTerritory = territory;
-      console.log("checkForOwnedTerritory");
     }
   });
   return success;
@@ -92,18 +76,15 @@ function checkForAdjacentEnemy(game) {
 function fight(game) {
   var battle = new Battle();
   var winner = battle.solveBattle(game.selectedTerritory, game.selectedEnemy);
-  console.log(winner);
   window.alert(winner + ' won the battle!');
   if(game.selectedEnemy.infantry === 0){
 
     game.selectedEnemy.updateOwner(game.turn);
     game.turn.checkContinents(game.continents);
-    //console.log(game.territories);
     game.selectedEnemy.updateInfantry(1);
     game.selectedTerritory.updateInfantry(-1);
     if (game.selectedTerritory.infantry >= 2) {
       var answer = window.prompt('Move more infantry? ('+ (game.selectedTerritory.infantry - 1) + ' or less)');
-      console.log(answer);
       if (Number(answer) < game.selectedTerritory.infantry) {
         game.selectedEnemy.updateInfantry(Number(answer))
         game.selectedTerritory.updateInfantry(-Number(answer));
@@ -125,22 +106,17 @@ function movement(game) {
       game.state = 'placement';
       var playerIdx = game.players.indexOf(game.turn);
       game.turn = game.players[++playerIdx % game.numPlayers];
-      console.log(game.turn);
       game.playerInfantry = numNewInfantry(game.turn, game);
       game.moveToTerritory = null;
       game.moveFromTerritory = null;
     }
   } else if (game.moveFromTerritory !== null) {
     if (checkForAdjacentOwnedTerritory(game)) {
-      console.log(game.moveToTerritory);
-      // window.alert('move units to ' + game.moveToTerritory.name)
     }
   } else if (game.moveFromTerritory === null) {
     if (checkForOwnedTerritory(game)) {
       game.moveFromTerritory = game.selectedTerritory;
       game.selectedTerritory = null;
-      console.log(game.moveFromTerritory);
-      // window.alert('move units from ' + game.moveFromTerritory.name);
     }
   }
 }
@@ -163,12 +139,11 @@ function elminatePlayer(game) {
       window.alert('A player has been eliminated!');
     }
   });
-  console.log(game.players);
   game.numPlayers = game.players.length;
 }
 
 function declareWinner(game) {
  if (game.players.length === 1) {
-   window.alert(game.players[0].namegit  + ' is the winner!!!!!!!!!1!')
+   window.alert(game.players[0].name  + ' is the winner!!!!!!!!!1!')
  }
 }
