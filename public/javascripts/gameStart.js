@@ -169,6 +169,6 @@ function elminatePlayer(game) {
 
 function declareWinner(game) {
  if (game.players.length === 1) {
-   window.alert(game.players[0] + ' is the winner!!!!!!!!!1!')
+   window.alert(game.players[0].namegit  + ' is the winner!!!!!!!!!1!')
  }
 }
