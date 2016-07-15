@@ -27,7 +27,6 @@ describe('Player', function(){
       var territory = new Territory('RosaritaVille');
       rosarita.addTerritory(territory);
       territory.updateInfantry(16);
-      console.log("infantry: ", rosarita.sumInfantry());
       expect(rosarita.sumInfantry()).to.equal(16);
   });
   it('should be able to sum up all infantry on multiple territories', function() {
@@ -50,7 +49,6 @@ describe('Player', function(){
     rosarita.addTerritory(parkTerritory);
 
     var westValley = new Continent('West Valley', [goodyearTerritory, avondaleTerritory, parkTerritory], 3);
-    console.log('HELLO', westValley);
     expect(rosarita.getBonus([westValley])).to.equal(3);
   });
   it('should be able to get their total bonus infantry units', function() {

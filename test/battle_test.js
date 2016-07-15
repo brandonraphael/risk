@@ -2,20 +2,19 @@ var expect = require('chai').expect;
 
 var Battle = require('../public/javascripts/battle');
 var Territory = require('../public/javascripts/territory');
+var Player = require('../public/javascripts/player');
 
 describe('Battle', function(){
   it('determines the winner of a battle', function(){
       var east = new Territory('East');
       east.updateInfantry(4);
+      east.updateOwner(new Player("Bob"));
       var west = new Territory('West');
+      west.updateOwner(new Player("Joe"));
       west.updateInfantry(3);
       var battle = new Battle();
-      // var attackerRoll = battle.getAttackerRoll(east.infantry);
-      // console.log("attackerRolls: ", attackerRoll);
-      // var defenderRoll = battle.getDefenderRoll(west.infantry);
-      // console.log("defenderRolls: ", defenderRoll);
       var result = battle.solveBattle(east, west);
-      console.log(result);
+      console.log("winner: ", result);
   });
   it('should determine who has the higher rolls with one dice', function() {
     var battle = new Battle();

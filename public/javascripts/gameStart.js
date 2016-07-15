@@ -93,7 +93,7 @@ function fight(game) {
   var battle = new Battle();
   var winner = battle.solveBattle(game.selectedTerritory, game.selectedEnemy);
   console.log(winner);
-  window.alert(winner.name + ' won the battle!');
+  window.alert(winner + ' won the battle!');
   if(game.selectedEnemy.infantry === 0){
 
     game.selectedEnemy.updateOwner(game.turn);
