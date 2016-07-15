@@ -57,12 +57,10 @@ Battle.prototype.compareRolls = function (attackerRoll, defenderRoll, attackOwne
       results.attacker--;
     }
   }
-  console.log(attackerRoll);
-  console.log(defenderRoll);
 
   if(results.attacker > results.defender) results.winner = attackOwner;
   if(results.attacker < results.defender) results.winner = defendOwner;
-console.log(results);
+
   return results;
 };
 
