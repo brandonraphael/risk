@@ -24,7 +24,7 @@ window.onload = function() {
     this.stateCycle = ['placement', 'attack', 'movement'];
     this.moveFromTerritory = null;
     this.moveToTerritory = null;
-    this.numPlayers = 4;
+    this.numPlayers = 3;
     // rect = new Phaser.Rectangle(50, 50, 50, 50);
     // rect.neighbors = ['hello', 'world'];
 
@@ -349,7 +349,7 @@ window.onload = function() {
     this.territories.forEach(function(territory){
       territory.text = (game.add.text(territory.phaserObj.points[0].x, territory.phaserObj.points[0].y, territory.infantry, { font: "20px Times New Roman", fill: "#000", align: "center" }));
     });
-    
+
     game.stage.scale.pageAlignHorizontally = true;
     game.stage.scale.pageAlignVertically = true;
     game.scale.refresh();

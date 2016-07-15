@@ -1,4 +1,4 @@
-// var DiceEmulator = require('./dice_emulator');
+var DiceEmulator = require('./dice_emulator');
 
 function Battle(){
   this.diceEmulator = new DiceEmulator();
